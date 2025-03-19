@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -33,7 +34,11 @@ Auth::routes(['reset' => false]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function(){
-    
+
     Route::get('/home', [EmpleadoController::class, 'index'])->name('home');
 
 });
+
+Route::get('/user/home', [UserController::class, 'index'])->name('user.home');
+
+

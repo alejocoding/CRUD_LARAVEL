@@ -42,4 +42,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
+
+    // Métodos para verificar roles
+    public function isAdmin()
+    {
+        return $this->role->name === 'admin';
+    }
+
+    public function isUser()
+    {
+        return $this->role->name === 'user';
+    }
+
+
+
 }

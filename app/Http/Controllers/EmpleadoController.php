@@ -26,7 +26,7 @@ class EmpleadoController extends Controller
         //
         return view('empleado.create');
 
-       
+
     }
 
     /**
@@ -37,7 +37,7 @@ class EmpleadoController extends Controller
         //
 
         $campos = [
-            'nombres' =>'required|string|max:100',
+            'Nombres' =>'required|string|max:100',
             'PrimerApel' =>'required|string|max:100',
             'SegundoApel' =>'required|string|max:100',
             'Correo' =>'required|email',
@@ -66,7 +66,7 @@ class EmpleadoController extends Controller
 
         return redirect('empleado')->with('mensaje','Empleado agregado exitosamente');
     }
- 
+
     /**
      * Display the specified resource.
      */
@@ -106,25 +106,25 @@ class EmpleadoController extends Controller
         return view('empleado.update', compact('empleado'));
 
 
-        
+
 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)    
+    public function destroy($id)
     {
         //
 
-        
+
         $empleado= Empleado::findOrFail($id);
         if(Storage::delete('public/' . $empleado->Foto)){
-            
+
             Empleado::destroy($id);
-            
+
         };
-        
+
         return redirect('empleado')->with('mensaje','Se Elimino el usuario con exito');
 
     }
